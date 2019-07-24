@@ -1,8 +1,9 @@
 import fire from '../config/firebase';
 import { getAxios, postAxios } from './axios'
+import Snackbar from 'react-native-snackbar';
 
 export function userRegister(object, callback) {
-    postAxios('user/userSignUp', object, false, (err, data) => {
+    postAxios('user/userSignUp', object, false,false, (err, data) => {
         if (err) {
             return callback(err);
         } else {
@@ -13,7 +14,8 @@ export function userRegister(object, callback) {
 }
 
 export function userLogin(object, callback) {
-    postAxios('user/login', object, false, (err, data) => {
+    
+    postAxios('user/login', object,false, false, (err, data) => {
         if (err) {
             callback(err);
         } else {
@@ -22,7 +24,7 @@ export function userLogin(object, callback) {
     })
 }
 export function userForgot(object, callback) {
-    postAxios('user/reset', object, false, (err, data) => {
+    postAxios('user/reset', object,false, false, (err, data) => {
         if (err) {
             callback(err);
         } else {
@@ -30,6 +32,13 @@ export function userForgot(object, callback) {
         }
     })
 }
+
+export function  showSnackbar(title) {
+    Snackbar.show({
+      title: title,
+      duration: Snackbar.LENGTH_SHORT,
+    });
+  }
 
 
 

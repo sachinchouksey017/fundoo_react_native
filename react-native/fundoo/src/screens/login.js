@@ -84,6 +84,7 @@ constructor(){
   createAccount() {
     this.props.navigation.navigate('Register')
   }
+  
   forgot(){
     this.props.navigation.navigate('Forgot')
   }
